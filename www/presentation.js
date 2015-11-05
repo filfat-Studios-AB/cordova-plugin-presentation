@@ -30,16 +30,16 @@ var makeAbs = function(url){
 	}
 	if (!absUrl) {
 		absUrl = url;
-	};
+	}
 	return absUrl;
-}
+};
 
 var exec = function(){
   var args = arguments;
   setTimeout(function() {
     execRaw.apply(undefined, args);
   }, 0);
-}
+};
 
 /** WebIDL: NavigatorPresentation
 
@@ -85,14 +85,14 @@ Object.defineProperty(NavigatorPresentation.prototype, "onavailablechange", {
                 var evt = new AvailableChangeEvent("availablechange",res);
                 onavailablechange(evt);
             }
-        }
+        };
         exec(scb, function(){}, "Presentation", "addWatchAvailableChange", []);
       }
       else {
         //stop the service serving screen states
         exec(function(){}, function(){}, "Presentation", "clearWatchAvailableChange", []);
       }
-    };
+    }
   }
 });
 //hold the reference to the user defined callback
@@ -194,12 +194,12 @@ var PresentationSession = function(delSession){
   delSession.onstatechange = function(){
     if (typeof onstatechange == "function") {
       onstatechange.call(null);
-    };
+    }
   };
   delSession.onmessage = function(msg){
     if (typeof onmessage == "function") {
       onmessage.call(null,msg);
-    };
+    }
   };
   Object.defineProperty(this, "state", {
     get: function () {
@@ -213,7 +213,7 @@ var PresentationSession = function(delSession){
     set: function(value){
       if (typeof value == "function" || value == null) {
         onmessage = value;
-      };
+      }
     }
   });
   Object.defineProperty(this, "onstatechange", {
@@ -223,7 +223,7 @@ var PresentationSession = function(delSession){
     set: function(value){
       if (typeof value == "function" || value == null) {
         onstatechange = value;
-      };
+      }
     }
   });
 
